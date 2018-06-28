@@ -3,6 +3,7 @@ class BestStatePark::CLI
   def call
     greeting
     start
+    goodbye
   end
 
   def greeting
@@ -48,13 +49,17 @@ class BestStatePark::CLI
     16-Kansas 17-Kentucky 18-Louisiana 19-Maine 20-Maryland
     21-Massachusetts 22-Michigan 23-Minnesota 24-Mississippi 25-Missouri
     DOC
+    puts "------------------------------------------------------------"
   end
 
   def menu
     input = nil
     while input != "exit"
       puts ""
-      puts "Please enter a number to explore, list to view list, or exit to end:"
+      puts "          Which State would you like to explore?          "
+      puts "                Enter a valid number 1-50                 "
+      puts "                Or enter list to view list                "
+      puts "                   Or enter exit to end                   "
       puts ""
       input = gets.strip.downcase
       case input
