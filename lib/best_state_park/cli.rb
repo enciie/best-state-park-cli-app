@@ -22,6 +22,7 @@ class BestStatePark::CLI
     input = gets.strip.downcase
     if input == "y"
       list_states
+      menu
     elsif input == "n"
       goodbye
     else
@@ -34,9 +35,40 @@ class BestStatePark::CLI
 
   def list_states
     puts ""
-    puts "              Please enter a number to explore:             "
+    puts "------------------------------------------------------------"
+    puts <<-DOC
+    1-Alabama 2-Alaska 3-Arizona 4-Arkansas 5-California
+    6-Colorado 7-Connecticut 8-Delaware 9-Florida 10-Georgia
+    11-Hawaii 12-Idaho 13-Illinois 14-Indiana 15-Iowa
+    16-Kansas 17-Kentucky 18-Louisiana 19-Maine 20-Maryland
+    21-Massachusetts 22-Michigan 23-Minnesota 24-Mississippi 25-Missouri
+    1-Alabama 2-Alaska 3-Arizona 4-Arkansas 5-California
+    6-Colorado 7-Connecticut 8-Delaware 9-Florida 10-Georgia
+    11-Hawaii 12-Idaho 13-Illinois 14-Indiana 15-Iowa
+    16-Kansas 17-Kentucky 18-Louisiana 19-Maine 20-Maryland
+    21-Massachusetts 22-Michigan 23-Minnesota 24-Mississippi 25-Missouri
+    DOC
   end
 
+  def menu
+    input = nil
+    while input != "exit"
+      puts ""
+      puts "Please enter a number to explore, list to view list, or exit to end:"
+      puts ""
+      input = gets.strip.downcase
+      case input
+      when "1"
+        puts "more info on Alabama......................................"
+      when "2"
+        puts "more info on Alaska......................................."
+      when "list"
+        list_states
+      else
+        puts "        .......Please enter a valid reponse.......        "
+      end
+    end
+  end
 
   def goodbye
     puts ""
@@ -44,6 +76,5 @@ class BestStatePark::CLI
     puts "                     HAVE A GREAT DAY!                    "
     puts ""
   end
-
 
 end
