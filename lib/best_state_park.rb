@@ -1,5 +1,2 @@
-require "best_state_park/version"
-
-module BestStatePark
-  # Your code goes here...
-end
+require_relative 'best_state_park/version'
+require_relative 'best_state_park/cli'
