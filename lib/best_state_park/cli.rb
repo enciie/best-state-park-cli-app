@@ -5,7 +5,7 @@ class BestStatePark::CLI
     start
   end
 
-  def greetingy
+  def greeting
     puts "************************************************************"
     puts "*                                                          *"
     puts "*          WELCOME TO THE BEST NATIONAL PARKS CLI          *"
