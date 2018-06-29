@@ -37,18 +37,10 @@ class BestStatePark::CLI
   def list_states
     puts ""
     puts "------------------------------------------------------------"
-    puts <<-DOC
-    1-Alabama 2-Alaska 3-Arizona 4-Arkansas 5-California
-    6-Colorado 7-Connecticut 8-Delaware 9-Florida 10-Georgia
-    11-Hawaii 12-Idaho 13-Illinois 14-Indiana 15-Iowa
-    16-Kansas 17-Kentucky 18-Louisiana 19-Maine 20-Maryland
-    21-Massachusetts 22-Michigan 23-Minnesota 24-Mississippi 25-Missouri
-    1-Alabama 2-Alaska 3-Arizona 4-Arkansas 5-California
-    6-Colorado 7-Connecticut 8-Delaware 9-Florida 10-Georgia
-    11-Hawaii 12-Idaho 13-Illinois 14-Indiana 15-Iowa
-    16-Kansas 17-Kentucky 18-Louisiana 19-Maine 20-Maryland
-    21-Massachusetts 22-Michigan 23-Minnesota 24-Mississippi 25-Missouri
-    DOC
+    @parks = BestStatePark::Park.all
+    @parks.each.with_index(1) do |park, i|
+      puts "#{i}-#{park.state}"
+    end
     puts "------------------------------------------------------------"
   end
 
@@ -62,12 +54,10 @@ class BestStatePark::CLI
       puts "                   Or enter exit to end                   "
       puts ""
       input = gets.strip.downcase
-      case input
-      when "1"
-        puts "more info on Alabama......................................"
-      when "2"
-        puts "more info on Alaska......................................."
-      when "list"
+
+      if input.to_i > 0
+        puts @parks[input.to_i-1]
+      elsif input == "list"
         list_states
       else
         puts "        .......Please enter a valid reponse.......        "
