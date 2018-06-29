@@ -1,3 +1,4 @@
+require 'pry'
 class BestStatePark::Park
   attr_accessor :state, :park_name, :description
 
@@ -25,6 +26,11 @@ class BestStatePark::Park
   def self.scrape_page
     html = "https://www.travelandleisure.com/trip-ideas/national-parks/best-national-parks-by-state"
     doc = Nokogiri::HTML(open(html))
+    doc.css(".media-body").each do |park|
+      binding.pry
+      state_park = BestStatePark::Park.new
+      state_park.state = park.css("h2").text
+    end
   end
 
 end
