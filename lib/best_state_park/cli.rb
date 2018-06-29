@@ -56,7 +56,9 @@ class BestStatePark::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0
-        puts @parks[input.to_i-1]
+        the_park = @parks[input.to_i-1] 
+        puts "#{the_park.park_name}, #{the_park.state}"
+        puts "#{the_park.description}"
       elsif input == "list"
         list_states
       else
