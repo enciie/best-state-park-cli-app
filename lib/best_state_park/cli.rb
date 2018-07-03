@@ -7,7 +7,7 @@ class BestStatePark::CLI
   end
 
   def greeting
-    BestStatePark::Park.scrape_page
+    BestStatePark::Scrapper.scrape_page
     puts "************************************************************"
     puts "*                                                          *"
     puts "*          WELCOME TO THE BEST NATIONAL PARKS CLI          *"
