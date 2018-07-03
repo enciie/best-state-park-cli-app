@@ -2,25 +2,14 @@ require 'pry'
 class BestStatePark::Park
   attr_accessor :state, :park_name, :description
 
+  @@all = []
+
   def self.all
+    @@all
+  end
 
-    park_1 = self.new
-    park_1.state = "Alabama"
-    park_1.park_name = "national park 1"
-    park_1.description = "info about the national park 1"
-
-    park_2 = self.new
-    park_2.state = "Alaska"
-    park_2.park_name = "national park 2"
-    park_2.description = "info about the national park 2"
-
-    park_3 = self.new
-    park_3.state = "Arizona"
-    park_3.park_name = "national park 3"
-    park_3.description = "info about the national park 3"
-
-
-    [park_1, park_2, park_3]
+  def save
+    @@all << self
   end
 
   def self.scrape_page
@@ -33,6 +22,8 @@ class BestStatePark::Park
       location_arr = park.css("h2").text.strip.split(', ')
       state_park.state = location_arr[1]
       state_park.park_name = location_arr[0]
+
+      state_park.save unless state_park.state == nil
     end
   end
 

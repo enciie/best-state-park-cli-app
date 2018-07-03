@@ -13,6 +13,7 @@ class BestStatePark::CLI
     puts "*                                                          *"
     puts "************************************************************"
     puts ""
+    BestStatePark::Park.scrape_page
   end
 
   def start
@@ -56,7 +57,7 @@ class BestStatePark::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0
-        the_park = @parks[input.to_i-1] 
+        the_park = @parks[input.to_i-1]
         puts "#{the_park.park_name}, #{the_park.state}"
         puts "#{the_park.description}"
       elsif input == "list"
