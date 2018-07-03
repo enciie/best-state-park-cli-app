@@ -23,7 +23,7 @@ class BestStatePark::Park
       state_park.state = location_arr[1]
       state_park.park_name = location_arr[0]
 
-      state_park.save unless state_park.state == nil
+      state_park.save unless state_park.park_name == "Brown v. Board of Education" || state_park.state == nil
     end
   end
 
