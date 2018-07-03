@@ -12,6 +12,9 @@ class BestStatePark::CLI
     puts "*                                                          *"
     puts "*          WELCOME TO THE BEST NATIONAL PARKS CLI          *"
     puts "*                                                          *"
+    puts "*             This app allows you to explore               *"
+    puts "*             the best National park per state             *"
+    puts "*                                                          *"
     puts "************************************************************"
     puts ""
   end
@@ -26,11 +29,11 @@ class BestStatePark::CLI
       list_states
       menu
     elsif input == "n"
+      puts ""
       puts "           Let's go on an adventure next time!           "
+      puts ""
     else
-      puts ""
-      puts "        .......Please enter a valid reponse.......       "
-      puts ""
+      invalid
       start
     end
   end
@@ -50,19 +53,25 @@ class BestStatePark::CLI
     while input != "exit"
       puts ""
       puts "          Which State would you like to explore?          "
-      puts "                Enter a valid number 1-50                 "
-      puts "                Or enter list to view list                "
-      puts "                   Or enter exit to end                   "
+      puts "         Enter a valid number 1-50 or State Name:         "
+      puts "              Or enter 'list' to view list                "
+      puts "                 Or enter 'exit' to end                   "
       puts ""
       input = gets.strip.downcase
 
-      if input.to_i > 0
+      if input == "list"
+        list_states
+      elsif input.to_i == 0
+        if park = BestStatePark::Park.find_by_state(input)
+          print_park(park)
+        else
+          invalid
+        end
+      elsif input.to_i > 0 && input.to_i < 51
         park = @parks[input.to_i-1]
         print_park(park)
-      elsif input == "list"
-        list_states
       else
-        puts "        .......Please enter a valid reponse.......        "
+        invalid
       end
     end
   end
@@ -75,6 +84,12 @@ class BestStatePark::CLI
     puts ""
     puts "* DESCRIPTION *"
     puts "#{park.description}"
+    puts ""
+  end
+
+  def invalid
+    puts ""
+    puts "    ...........PLEASE ENTER A VALID RESPONSE...........    "
     puts ""
   end
 
