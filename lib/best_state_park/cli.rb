@@ -26,7 +26,7 @@ class BestStatePark::CLI
       list_states
       menu
     elsif input == "n"
-      goodbye
+      puts "           Let's go on an adventure next time!           "
     else
       puts ""
       puts "        .......Please enter a valid reponse.......       "
@@ -69,12 +69,11 @@ class BestStatePark::CLI
 
   def print_park(park)
     puts ""
-    puts "NATIONAL PARK:"
-    puts "--------------"
+    puts "* NATIONAL PARK *"
     puts "#{park.park_name}, #{park.state}"
     puts ""
-    puts "DESCRIPTION:"
-    puts "------------"
+    puts ""
+    puts "* DESCRIPTION *"
     puts "#{park.description}"
     puts ""
   end
