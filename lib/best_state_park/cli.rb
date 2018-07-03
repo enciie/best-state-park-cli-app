@@ -7,13 +7,13 @@ class BestStatePark::CLI
   end
 
   def greeting
+    BestStatePark::Park.scrape_page
     puts "************************************************************"
     puts "*                                                          *"
     puts "*          WELCOME TO THE BEST NATIONAL PARKS CLI          *"
     puts "*                                                          *"
     puts "************************************************************"
     puts ""
-    BestStatePark::Park.scrape_page
   end
 
   def start
@@ -57,15 +57,26 @@ class BestStatePark::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0
-        the_park = @parks[input.to_i-1]
-        puts "#{the_park.park_name}, #{the_park.state}"
-        puts "#{the_park.description}"
+        park = @parks[input.to_i-1]
+        print_park(park)
       elsif input == "list"
         list_states
       else
         puts "        .......Please enter a valid reponse.......        "
       end
     end
+  end
+
+  def print_park(park)
+    puts ""
+    puts "NATIONAL PARK:"
+    puts "--------------"
+    puts "#{park.park_name}, #{park.state}"
+    puts ""
+    puts "DESCRIPTION:"
+    puts "------------"
+    puts "#{park.description}"
+    puts ""
   end
 
   def goodbye
