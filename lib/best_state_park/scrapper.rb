@@ -6,8 +6,8 @@ class BestStatePark::Scrapper
 
     doc.css(".media-body").each do |park|
       state_park = BestStatePark::Park.new
-      state_park.state = park.css("h2").text.strip.split(', ').last
       state_park.name = park.css("h2").text.strip.split(', ').first
+      state_park.state = park.css("h2").text.strip.split(', ').last
       state_park.description = park.css("p").text
         if state_park.description = ""
           state_park.description = park.css("div").text
