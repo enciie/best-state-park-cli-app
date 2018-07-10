@@ -43,7 +43,7 @@ class BestStatePark::CLI
     puts "------------------------------------------------------------"
     @parks = BestStatePark::Park.all
     @parks.each.with_index(1) do |park, i|
-      puts "#{i}-#{park.state}"
+      puts "#{i} - #{park.state}"
     end
     puts "------------------------------------------------------------"
   end
@@ -67,7 +67,7 @@ class BestStatePark::CLI
         else
           invalid
         end
-      elsif input.to_i > 0 && input.to_i < 51
+      elsif input.to_i.between?(1, @parks.count)
         park = @parks[input.to_i-1]
         print_park(park)
       else
@@ -78,11 +78,11 @@ class BestStatePark::CLI
 
   def print_park(park)
     puts ""
-    puts "* NATIONAL PARK *"
+    puts "[ NATIONAL PARK ]"
     puts "#{park.name}, #{park.state}"
     puts ""
     puts ""
-    puts "* DESCRIPTION *"
+    puts "[ DESCRIPTION ]"
     puts "#{park.description}"
     puts ""
   end
