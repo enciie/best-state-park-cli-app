@@ -1,11 +1,11 @@
 class BestStatePark::Park
-  attr_accessor :state, :park_name, :description
+  attr_accessor :name , :state, :description
 
   @@all = []
 
-  def initialize(state = nil, park_name = nil, description = nil)
+  def initialize(name = nil, state = nil, description = nil)
+    @name = name
     @state = state
-    @park_name = park_name
     @description = description
   end
 

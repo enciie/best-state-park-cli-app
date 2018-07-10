@@ -79,7 +79,7 @@ class BestStatePark::CLI
   def print_park(park)
     puts ""
     puts "* NATIONAL PARK *"
-    puts "#{park.park_name}, #{park.state}"
+    puts "#{park.name}, #{park.state}"
     puts ""
     puts ""
     puts "* DESCRIPTION *"
