@@ -75,8 +75,9 @@ class BestStatePark::CLI
           invalid
         end
       elsif input.to_i.between?(1, @parks.size)
-        park = @parks[input.to_i-1]
-        print_park(park)
+        if park = BestStatePark::Park.find_by_number(input.to_i)
+          print_park(park)
+        end
       else
         invalid
       end
