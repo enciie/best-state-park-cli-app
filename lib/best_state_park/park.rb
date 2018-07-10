@@ -17,6 +17,10 @@ class BestStatePark::Park
     @@all << self
   end
 
+  def self.find_by_number(id)
+    self.all[id.to_i - 1]
+  end
+
   def self.find_by_state(state)
     self.all.detect do |park|
       park.state.downcase == state.downcase.strip
