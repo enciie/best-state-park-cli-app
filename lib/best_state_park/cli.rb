@@ -6,7 +6,7 @@ class BestStatePark::CLI
   end
 
   def greeting
-    BestStatePark::Scrapper.scrape_page
+    BestStatePark::Scraper.scrape_page
     puts "************************************************************"
     puts "*                                                          *"
     puts "*          WELCOME TO THE BEST NATIONAL PARKS CLI          *"
@@ -51,6 +51,18 @@ class BestStatePark::CLI
     puts "------------------------------------------------------------"
   end
 
+  def list_parks
+    puts ""
+    puts "------------------------------------------------------------"
+
+    @parks = BestStatePark::Park.all
+    @parks.each.with_index(1) do |park, i|
+      puts "#{i} - #{park.name}"
+    end
+
+    puts "------------------------------------------------------------"
+  end
+
   def menu
     input = nil
     while input != "exit"
@@ -66,10 +78,14 @@ class BestStatePark::CLI
 
       if input == "list"
         list_states
+      elsif input == "list parks"
+        list_parks
       elsif input == "exit"
         goodbye
       elsif input.to_i == 0
         if park = BestStatePark::Park.find_by_state(input)
+          print_park(park)
+        elsif park = BestStatePark::Park.find_by_park(input)
           print_park(park)
         else
           invalid

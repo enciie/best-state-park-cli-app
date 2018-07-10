@@ -27,4 +27,10 @@ class BestStatePark::Park
     end
   end
 
+  def self.find_by_park(park)
+    self.all.detect do |park_name|
+      park_name.name.downcase == park.downcase.strip
+    end
+  end
+
 end
