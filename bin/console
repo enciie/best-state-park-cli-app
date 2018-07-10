@@ -10,5 +10,9 @@ require "best_state_park"
 # require "pry"
 # Pry.start
 
+def reload!
+  load '../lib/best_state_park/park.rb'
+end
+
 require "irb"
 IRB.start(__FILE__)
