@@ -70,7 +70,8 @@ class BestStatePark::CLI
       puts ""
       puts "          Which State would you like to explore?          "
       puts "         Enter a valid number 1-50 or State Name:         "
-      puts "              Or enter 'list' to view list                "
+      puts "           Or enter 'list' to view list by State          "
+      puts "    Or enter 'list parks' to view list by National Park   "
       puts "                 Or enter 'exit' to end                   "
       puts ""
 
